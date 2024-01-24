@@ -33,6 +33,7 @@ def mainLoop(
     sttDevice: str,
     contextWindowRatio: float,
     trace: str,
+    inputPrompt: str,
 ):
     config.Initialize(needOpenaiGPTKey=("oai:" in modelID))
     config.quantization = quantization
@@ -111,7 +112,7 @@ use the provided Dockerfile to build an image and container, and modify the rele
         if "" != trace.strip():
             with open(trace + "/ailice-trace-" + timestamp + ".json", "w") as f:
                 json.dump(processor.ToJson(), f, indent=2)
-        inpt = GetInput(speech)
+        inpt = inputPrompt
         processor(inpt)
         is_loop_continue = False
     return
