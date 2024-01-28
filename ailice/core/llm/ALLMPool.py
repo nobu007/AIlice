@@ -18,10 +18,13 @@ class ALLMPool:
             print("modelLocation=", location)
             if "oai" == locType:
                 self.pool[id] = AModelChatGPT(location)
+                print("AModelChatGPT is used.")
             elif "yka" == locType:
                 self.pool[id] = AModelYka(location, modelLocation=location)
+                print("AModelYka is used.")
             else:
                 self.pool[id] = AModelLLAMA(locType=locType, modelLocation=location)
+                print("AModelLLAMA is used.")
         return
 
     def GetModel(self, modelID: str):
